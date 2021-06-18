@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: bonus-service
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: bonus-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/bonus
+    username: bonus
+    password: bonus
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+
+server:
+  port: 8084
