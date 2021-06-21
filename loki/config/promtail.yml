@@ -1,0 +1,35 @@
+server:
+  http_listen_port: 9080
+  grpc_listen_port: 0
+
+positions:
+  filename: /tmp/positions.yaml
+
+clients:
+  - url: http://loki:3100/loki/api/v1/push
+
+scrape_configs:
+- job_name: verleih
+  static_configs:
+  - targets:
+      - verleih
+    labels:
+      service: verleih
+      domain: scooter
+      __path__: /scooter/scooter-verleih-service/logs/*log
+- job_name: verfuegbarkeit
+  static_configs:
+  - targets:
+      - verfuegbarkeit
+    labels:
+      service: verfuegbarkeit
+      domain: scooter
+      __path__: /scooter/scooter-verfuegbarkeit-service/logs/*log
+- job_name: rueckgabe
+  static_configs:
+  - targets:
+      - rueckgabe
+    labels:
+      service: rueckgabe
+      domain: scooter
+      __path__: /scooter/scooter-rueckgabe-service/logs/*log
